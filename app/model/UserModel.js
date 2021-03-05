@@ -47,10 +47,8 @@ User.DeleteById = function(id, result){
 };
 
 User.UpdateById = function(id, user, result){ //NOK
-    const userById = this.getUserByIdAPI(id);
-    console.log(new User(userById));
-    sql.query("UPDATE t_users set ? WHERE id = ?", user, id, function (err, req, res) {
-        if(err) result(null, err);
+    sql.query("UPDATE t_users set ? WHERE id = ?", [user, id], function (err, res) {
+        if(err) result(res, err);
         result(null, res);
     }); 
 };
@@ -61,7 +59,7 @@ User.UpdateAvatarById = function(id, url, result){//NOK
     console.log(result);
     sql.query("UPDATE t_users set avatar = ? WHERE id = ?", [url, id], function (err, res) {
         if(res.affectedRows === 0) return result(res, err);
-        return result(null, res);
+        return result(res, null);
     }); 
 };
 

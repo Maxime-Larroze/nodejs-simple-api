@@ -36,8 +36,10 @@ exports.FindById = function(req, res) {
 
 exports.Update = function(req, res) {
   User.UpdateById(req.params.id, req.body, function(err, user) {
-    if (!err) return res.status(403).json({ error:"403", information: 'User ID '+req.params.id+' not found' });
-    res.status(201).json(user);
+    console.log(err);
+    console.log(user);
+    if (user.affectedRows === 0) return res.status(403).json({ error:"403", information: 'User ID '+req.params.id+' not found' });
+    res.status(201).json({ statut:"201", information: 'User ID '+req.params.id+' modified' });
   });
 };
 
@@ -88,10 +90,4 @@ exports.FindDocumentById = function(req, res) {
       if (data == '' || data == null) return res.status(403).json({ error:"403", message: "No document available" });
       return res.status(200).json(data);
   });
-};
-
-exports.ShowInterface = function (request, response){
-  //show this file when the "/" is requested
-  response.sendFile(path.join(__dirname, '../web', 'index.html'));
-  // response.sendFile(__dirname+"../web/index.html");
 };

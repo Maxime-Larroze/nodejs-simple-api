@@ -14,7 +14,7 @@ const dbConnection = mysql.createConnection({
     database: process.env.DB_NAME
 });
 dbConnection.connect(function(err) {if (err) console.error('error connecting: ' + err.stack); return;});
-app.listen(process.env.PORT, process.env.ADDRESS,console.log('API server started on: http://' + process.env.ADDRESS+":"+process.env.PORT));
+app.listen(process.env.PORT, process.env.ADDRESS,[console.log('API server started on: http://' + process.env.ADDRESS+":"+process.env.PORT), console.log("Informations API on: http://"+process.env.ADDRESS+":"+process.env.PORT+"/ (get)")]);
 console.log();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
