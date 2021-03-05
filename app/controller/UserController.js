@@ -1,6 +1,7 @@
 'use strict';
 const User = require('../model/UserModel.js');
 const fs = require('fs');
+const http = require('http');
 require('dotenv').config();
 
 exports.FindAll = function(req, res) {
@@ -89,3 +90,8 @@ exports.FindDocumentById = function(req, res) {
   });
 };
 
+exports.ShowInterface = function (request, response){
+  //show this file when the "/" is requested
+  response.sendFile(path.join(__dirname, '../web', 'index.html'));
+  // response.sendFile(__dirname+"../web/index.html");
+};

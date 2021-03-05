@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <title>Simple API NodeJS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1>Simple API NodeJS</h1>
+</div>
+
+<div class="container" style="margin-top:30px">
+  <div class="row">
+    <div class="col-lg-12 mt-5">
+        <h2 class="text-center">Routes</h2>
+        <a target="_blank" href="http://localhost:3000/users"><h3>/users (get)</h3></a>
+        <p>Retourne tous les utilisateurs inscrits dans la base de données</p>
+        <hr>
+        <h3>/users (post)</h3>
+        <p>Créé un utilisateur dans la base de données et retourne son ID</p>
+        <hr>
+        <a target="_blank" href="http://localhost:3000/users/1"><h3>/users/{id} (get)</h3></a>
+        <p>Retourne toutes les informations d'un utilisateur (à l'exception du mot de passe) via son ID</p>
+        <hr>
+        <h3>/users/{id} (put)</h3>
+        <p>Modifie un utilisateur via son ID</p>
+        <hr>
+        <h3>/users/{id} (delete)</h3>
+        <p>supprime un utilisateur via son ID</p>
+        <hr>
+        <a target="_blank" href="http://localhost:3000/documents"><h3>/documents (get)</h3></a>
+        <p>Retourne l'URL de tous les documents disponibles sur le serveur</p>
+        <hr>
+        <h3>/documents {file, userid} (post)</h3>
+        <p>Upload un document sur le serveur et inscrit l'URL à l'avatar du "userid" passé en paramètre</p>
+        <hr>
+        <a target="_blank" href="http://localhost:3000/documents/my_document_test.png"><h3>/documents/{id} (get)</h3></a>
+        <p>Retourne l'URL du document via son appelation placé en paramètre id</p>
+        <hr>
+        <h3>/documents/{id} (delete)</h3>
+        <p>Supprime un document du serveur via son appelation placé en paramètre id</p>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron text-center mt-5">
+  <p>Copyright Maxime LARROZE 2021</p>
+</div>
+
+</body>
+</html>
