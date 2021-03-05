@@ -7,5 +7,8 @@ const connection = mysql.createConnection({
     password : process.env.DB_PASSWORD,
     database: process.env.DB_NAME
 });
-connection.connect(function(err) {if (err) console.error('error connecting: ' + err.stack); return;});
+connection.connect(function(err, res) {
+    try {if (err) console.log("Unable to join the database. Please try again later.");}
+    catch(err) {return console.log("Unable to join the database. Please try again later.");}
+});
 module.exports = connection;
