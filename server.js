@@ -5,7 +5,6 @@ require('dotenv').config();
 const mysql = require('mysql');
 const fileUpload = require('express-fileupload');
 const routes = require('./app/routes/appRoutes'); 
-const errorlog = require('express-errorlog');
 
 const dbConnection = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -22,7 +21,4 @@ console.log();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(fileUpload());
-
-app.use(errorlog);
-
 routes(app);
