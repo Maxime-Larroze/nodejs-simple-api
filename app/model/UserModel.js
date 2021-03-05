@@ -46,21 +46,22 @@ User.DeleteById = function(id, result){
     }); 
 };
 
-User.UpdateById = function(id, user, result){ //NOK
+User.UpdateById = function(id, user, result){
     sql.query("UPDATE t_users set ? WHERE id = ?", [user, id], function (err, res) {
-        if(err) result(res, err);
-        result(null, res);
+        if(err) return result(res, err);
+        return result(null, res);
     }); 
 };
 
 User.UpdateAvatarById = function(id, url, result){//NOK
-    console.log(id);
-    console.log(url);
-    console.log(result);
-    sql.query("UPDATE t_users set avatar = ? WHERE id = ?", [url, id], function (err, res) {
-        if(res.affectedRows === 0) return result(res, err);
-        return result(res, null);
-    }); 
+    try {
+        sql.query("UPDATE t_users set avatar = ? WHERE id = ?", [url, id], function (err, res) {
+            if(res.affectedRows === 0) return result(res, err);
+            return result(null, res);
+        }); 
+    } catch(err) {
+        return result(res,res);
+    }
 };
 
 module.exports = User;
